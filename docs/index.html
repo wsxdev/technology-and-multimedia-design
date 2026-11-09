@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TYDM · Tecnología y Diseño Multimedia — Opener Prototype 3.1</title>
+  <meta name="description" content="Explorador 3D interactivo del modelo Opener Prototype 3.1. Un proyecto de la materia Tecnología y Diseño Multimedia: modelado, materiales, WebGL e interactividad.">
+  <meta name="theme-color" content="#07080a">
+  <meta property="og:title" content="TYDM · Tecnología y Diseño Multimedia">
+  <meta property="og:description" content="Del modelo 3D a la experiencia interactiva. Explorá el Opener Prototype 3.1 en tiempo real.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2307080a'/%3E%3Cpath d='M16 6l8 4.5v9L16 24l-8-4.5v-9L16 6z' fill='none' stroke='%23ff7a3d' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M8 10.5l8 4.5 8-4.5M16 24v-9' fill='none' stroke='%23ff7a3d' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="TYDM, ir al inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7L12 2.5Z"/>
+            <path d="m3.5 7 8.5 5 8.5-5M12 21.5v-9.5"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>TYDM</strong>
+          <span>Tecnología y Diseño Multimedia</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <a href="#visor">Modelo 3D</a>
+        <a href="#materia">Materia</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#ficha">Ficha técnica</a>
+        <a href="#creditos">Créditos</a>
+      </nav>
+
+      <a href="#visor" class="header-cta">
+        Abrir visor
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grid-lines"></div>
+        <div class="glow glow-a"></div>
+        <div class="glow glow-b"></div>
+        <div class="hero-vignette"></div>
+      </div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Proyecto integrador · 2026</p>
+          <h1 id="hero-title">Del modelo 3D a la <em>experiencia interactiva</em>.</h1>
+          <p class="hero-lead">
+            Un recorrido por el proceso de diseño de un objeto digital: geometría, materiales,
+            luz e interacción. Explorá el modelo, cambiale el acabado y descubrí cómo la
+            tecnología y el diseño multimedia se encuentran en una misma pieza.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#visor" class="btn btn-primary">
+              Explorar el modelo 3D
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#materia" class="btn btn-ghost">Conocer la materia</a>
+          </div>
+
+          <ul class="hero-stats" aria-label="Datos del modelo">
+            <li><strong data-count="37454">37.454</strong><span>vértices</span></li>
+            <li><strong data-count="69098">69.098</strong><span>triángulos</span></li>
+            <li><strong>glTF 2.0</strong><span>formato abierto</span></li>
+          </ul>
+        </div>
+
+        <a href="#visor" class="hero-card" aria-label="Ir al visor 3D interactivo">
+          <div class="hero-card-top">
+            <span>Modelo 01</span>
+            <span class="live-chip"><i></i> Interactivo</span>
+          </div>
+
+          <div class="orbit" aria-hidden="true">
+            <span class="ring ring-1"></span>
+            <span class="ring ring-2"></span>
+            <span class="ring ring-3"></span>
+            <span class="orbit-spinner"></span>
+            <span class="orbit-core"><strong>3.1</strong><small>prototipo</small></span>
+          </div>
+
+          <div class="hero-card-bottom">
+            <div>
+              <p class="card-kicker">Opener Prototype</p>
+              <p class="card-title">Explorar el objeto</p>
+            </div>
+            <span class="card-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="marquee-group">
+            <span>Modelado 3D</span><i>·</i><span>Materiales PBR</span><i>·</i><span>WebGL</span><i>·</i><span>Diseño de interfaz</span><i>·</i><span>Narrativa multimedia</span><i>·</i><span>glTF 2.0</span><i>·</i>
+          </div>
+          <div class="marquee-group">
+            <span>Modelado 3D</span><i>·</i><span>Materiales PBR</span><i>·</i><span>WebGL</span><i>·</i><span>Diseño de interfaz</span><i>·</i><span>Narrativa multimedia</span><i>·</i><span>glTF 2.0</span><i>·</i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VISOR ============ -->
+    <section class="section viewer-section" id="visor" aria-labelledby="visor-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-label">01 / Visor interactivo</p>
+          <div>
+            <h2 id="visor-title">Opener Prototype 3.1</h2>
+            <p>
+              Una pieza de diseño industrial convertida en objeto digital. Arrastrá para orbitar,
+              usá la rueda para acercarte y probá las vistas y los acabados. Todo ocurre en tiempo
+              real dentro del navegador.
+            </p>
+            <div class="chips">
+              <span class="chip">glTF 2.0</span>
+              <span class="chip">Material PBR</span>
+              <span class="chip">Three.js · WebGL</span>
+              <span class="chip">CC BY 4.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="viewer-grid reveal">
+          <div class="stage" id="stage">
+            <div class="stage-grid" aria-hidden="true"></div>
+
+            <canvas id="scene" tabindex="0" aria-label="Visor 3D interactivo del modelo Opener Prototype 3.1. Arrastrá para rotar, usá la rueda para hacer zoom."></canvas>
+
+            <div class="stage-top">
+              <span class="live-chip"><i></i> Render en vivo</span>
+              <div class="stage-tools">
+                <button type="button" class="icon-btn" id="btn-capture" aria-label="Descargar una captura del modelo" title="Descargar captura">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1L9 4h6l1.5 2h1A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-8Z"/><circle cx="12" cy="12.5" r="3.2"/></svg>
+                </button>
+                <button type="button" class="icon-btn" id="btn-fullscreen" aria-label="Pantalla completa" title="Pantalla completa" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H4v4M16 3h4v4M8 21H4v-4M16 21h4v-4"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="stage-hint">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="5"/><path d="M12 6.5v4"/></svg>
+              <span class="hint-full">Arrastrá para rotar · Rueda para zoom · Click derecho para desplazar</span>
+              <span class="hint-short">Tocá y arrastrá para rotar</span>
+            </div>
+
+            <div class="zoom-controls" role="group" aria-label="Controles de cámara">
+              <button type="button" class="icon-btn" id="btn-zoom-in" aria-label="Acercar" title="Acercar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              </button>
+              <button type="button" class="icon-btn" id="btn-zoom-out" aria-label="Alejar" title="Alejar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>
+              </button>
+              <button type="button" class="icon-btn" id="btn-reset-view" aria-label="Restablecer vista" title="Restablecer vista">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>
+              </button>
+            </div>
+
+            <div class="loader" id="loader" role="status" aria-live="polite">
+              <div class="loader-ring" aria-hidden="true"></div>
+              <p>Cargando modelo 3D…</p>
+              <div class="loader-bar" aria-hidden="true"><span id="loader-fill"></span></div>
+              <span class="loader-pct" id="loader-pct">0%</span>
+            </div>
+
+            <div class="stage-error" id="stage-error" hidden>
+              <strong>No se pudo cargar el modelo</strong>
+              <p>Si abriste el archivo con <code>file://</code>, necesitás un servidor local. En la carpeta del proyecto ejecutá <code>python -m http.server</code> y entrá a <code>http://localhost:8000/docs/</code>.</p>
+            </div>
+
+            <div class="stage-toast" id="toast" role="status" aria-live="polite"></div>
+          </div>
+
+          <aside class="control-panel" aria-label="Controles del visor">
+            <div class="panel-block">
+              <h3>Vistas</h3>
+              <div class="view-buttons" role="group" aria-label="Vistas de cámara">
+                <button type="button" data-view="iso" class="is-active">Isométrica</button>
+                <button type="button" data-view="front">Frontal</button>
+                <button type="button" data-view="side">Lateral</button>
+                <button type="button" data-view="top">Superior</button>
+              </div>
+            </div>
+
+            <div class="panel-block">
+              <h3>Acabado</h3>
+              <div class="swatches" role="group" aria-label="Color y material">
+                <button type="button" class="swatch is-active" data-finish="steel" style="--sw:#c9d3dd" aria-label="Acero cepillado" title="Acero cepillado"></button>
+                <button type="button" class="swatch" data-finish="graphite" style="--sw:#3c424b" aria-label="Grafito mate" title="Grafito mate"></button>
+                <button type="button" class="swatch" data-finish="copper" style="--sw:#c97a4a" aria-label="Cobre pulido" title="Cobre pulido"></button>
+                <button type="button" class="swatch" data-finish="orange" style="--sw:#ff7a3d" aria-label="Naranja técnico" title="Naranja técnico"></button>
+                <button type="button" class="swatch" data-finish="bone" style="--sw:#ece7dd" aria-label="Blanco hueso" title="Blanco hueso"></button>
+              </div>
+              <p class="finish-name" id="finish-name">Acero cepillado</p>
+            </div>
+
+            <div class="panel-block">
+              <h3>Comportamiento</h3>
+              <label class="switch-row">
+                <span>Rotación automática</span>
+                <input type="checkbox" id="toggle-rotate" checked>
+                <span class="switch" aria-hidden="true"></span>
+              </label>
+              <label class="switch-row">
+                <span>Ver malla</span>
+                <input type="checkbox" id="toggle-wire">
+                <span class="switch" aria-hidden="true"></span>
+              </label>
+            </div>
+
+            <div class="panel-block">
+              <h3>Ficha del modelo</h3>
+              <dl class="panel-data">
+                <div><dt>Vértices</dt><dd>37.454</dd></div>
+                <div><dt>Triángulos</dt><dd>69.098</dd></div>
+                <div><dt>Materiales</dt><dd>1 · PBR</dd></div>
+                <div><dt>Texturas</dt><dd>Sin mapas</dd></div>
+                <div><dt>Formato</dt><dd>glTF 2.0</dd></div>
+              </dl>
+            </div>
+
+            <p class="panel-credit">
+              Modelo de <a href="https://sketchfab.com/algl" target="_blank" rel="noopener">algl</a> · CC BY 4.0
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MATERIA ============ -->
+    <section class="section section-alt" id="materia" aria-labelledby="materia-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-label">02 / La materia</p>
+          <div>
+            <h2 id="materia-title">Tecnología, diseño y multimedia en una misma pieza.</h2>
+            <p>
+              La materia articula tres campos: la tecnología como herramienta, el diseño como método
+              y lo multimedia como lenguaje. Este proyecto reúne los tres en un mismo artefacto
+              digital que se puede mirar, rotar y transformar.
+            </p>
+          </div>
+        </div>
+
+        <div class="topic-grid">
+          <article class="topic-card reveal">
+            <span class="topic-num" aria-hidden="true">01</span>
+            <span class="topic-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20.5 7v10L12 21.5 3.5 17V7L12 2.5Z"/><path d="m3.5 7 8.5 5 8.5-5M12 21.5v-9.5"/></svg>
+            </span>
+            <h3>Modelado 3D</h3>
+            <p>Geometría, topología y optimización de mallas para construir objetos digitales precisos, livianos y listos para la web.</p>
+            <ul class="tags"><li>Malla</li><li>Escala</li><li>Optimización</li></ul>
+          </article>
+
+          <article class="topic-card reveal">
+            <span class="topic-num" aria-hidden="true">02</span>
+            <span class="topic-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18h1.5a2 2 0 0 0 0-4H12a2 2 0 0 1 0-4h6a3 3 0 0 0 3-3 7 7 0 0 0-9-7Z"/><circle cx="7.5" cy="11" r=".8"/><circle cx="9.5" cy="7" r=".8"/><circle cx="14" cy="6.5" r=".8"/><circle cx="17" cy="9.5" r=".8"/></svg>
+            </span>
+            <h3>Materiales y render</h3>
+            <p>Color, rugosidad, metalicidad e iluminación para construir la apariencia física del objeto y su puesta en escena.</p>
+            <ul class="tags"><li>PBR</li><li>Luz</li><li>Cámara</li></ul>
+          </article>
+
+          <article class="topic-card reveal">
+            <span class="topic-num" aria-hidden="true">03</span>
+            <span class="topic-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7 16 2.2-6.2L19.5 11 4 4Z"/></svg>
+            </span>
+            <h3>Interactividad</h3>
+            <p>Eventos, cámara orbital y WebGL para que la pieza responda al usuario en tiempo real, sin recargar la página.</p>
+            <ul class="tags"><li>Three.js</li><li>WebGL</li><li>Eventos</li></ul>
+          </article>
+
+          <article class="topic-card reveal">
+            <span class="topic-num" aria-hidden="true">04</span>
+            <span class="topic-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 9v11M8 14h6"/></svg>
+            </span>
+            <h3>Diseño de interfaz</h3>
+            <p>Jerarquía, contraste y controles claros para que la experiencia sea intuitiva, accesible y consistente en cualquier pantalla.</p>
+            <ul class="tags"><li>UI</li><li>UX</li><li>Accesibilidad</li></ul>
+          </article>
+
+          <article class="topic-card reveal">
+            <span class="topic-num" aria-hidden="true">05</span>
+            <span class="topic-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="m10 9 5 3-5 3V9Z"/></svg>
+            </span>
+            <h3>Narrativa multimedia</h3>
+            <p>Texto, imagen, movimiento y sonido organizados para contar el proceso detrás del objeto y darle un contexto de uso.</p>
+            <ul class="tags"><li>Storytelling</li><li>Ritmo</li><li>Contenido</li></ul>
+          </article>
+
+          <article class="topic-card reveal">
+            <span class="topic-num" aria-hidden="true">06</span>
+            <span class="topic-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>
+            </span>
+            <h3>Producción web</h3>
+            <p>Publicación, rendimiento y licencias: el paso final para que el proyecto circule, se comparta y pueda ser reutilizado.</p>
+            <ul class="tags"><li>HTML · CSS · JS</li><li>Deploy</li><li>Licencias</li></ul>
+          </article>
+        </div>
+
+        <blockquote class="quote reveal">
+          <p>“El diseño multimedia no es solo hacer que algo se vea bien: es decidir cómo se siente, cómo responde y qué historia cuenta.”</p>
+          <cite>Tecnología y Diseño Multimedia</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ PROCESO ============ -->
+    <section class="section" id="proceso" aria-labelledby="proceso-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-label">03 / Proceso</p>
+          <div>
+            <h2 id="proceso-title">Del archivo a la experiencia.</h2>
+            <p>
+              Un proyecto multimedia se construye por capas. Estas son las etapas que conectan
+              una malla 3D con una página web capaz de mostrarla, explicarla y hacerla interactiva.
+            </p>
+          </div>
+        </div>
+
+        <ol class="process-grid">
+          <li class="process-step reveal">
+            <span class="step-num">01</span>
+            <h3>Investigación</h3>
+            <p>Referencias, bocetos y definición del objeto, su escala y su contexto de uso.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="step-num">02</span>
+            <h3>Modelado</h3>
+            <p>Construcción de la malla, limpieza de la topología y ajuste de proporciones.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="step-num">03</span>
+            <h3>Materiales</h3>
+            <p>Acabados, iluminación y encuadre de cámara para una lectura clara del volumen.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="step-num">04</span>
+            <h3>Integración</h3>
+            <p>Exportación glTF, carga asíncrona, controles de cámara y diseño de la interfaz.</p>
+          </li>
+          <li class="process-step reveal">
+            <span class="step-num">05</span>
+            <h3>Publicación</h3>
+            <p>Optimización, accesibilidad, créditos y puesta en línea del proyecto.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FICHA ============ -->
+    <section class="section section-alt" id="ficha" aria-labelledby="ficha-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="section-label">04 / Ficha técnica</p>
+          <div>
+            <h2 id="ficha-title">Los datos detrás del objeto.</h2>
+            <p>
+              Cada decisión técnica deja una huella. Esta ficha resume el origen del modelo,
+              su geometría y las herramientas que lo ponen en movimiento.
+            </p>
+          </div>
+        </div>
+
+        <div class="ficha-grid">
+          <div class="ficha-card reveal">
+            <dl class="ficha-list">
+              <div><dt>Nombre</dt><dd>Opener Prototype3 1 Final Fixed</dd></div>
+              <div><dt>Autor</dt><dd><a href="https://sketchfab.com/algl" target="_blank" rel="noopener">algl</a></dd></div>
+              <div><dt>Fuente</dt><dd><a href="https://sketchfab.com/3d-models/opener-prototype3-1-final-fixed-fc3d1f05860b4549837d759a247ed764" target="_blank" rel="noopener">Sketchfab</a></dd></div>
+              <div><dt>Licencia</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></dd></div>
+              <div><dt>Año</dt><dd>2023</dd></div>
+              <div><dt>Geometría</dt><dd>37.454 vértices · 69.098 triángulos</dd></div>
+              <div><dt>Material</dt><dd>1 material PBR · sin mapas de textura</dd></div>
+              <div><dt>Formato</dt><dd>glTF 2.0 + buffer binario (.bin)</dd></div>
+              <div><dt>Motor</dt><dd>Three.js sobre WebGL</dd></div>
+              <div><dt>Interacción</dt><dd>Órbita, zoom, paneo, vistas y acabados</dd></div>
+            </dl>
+            <div class="ficha-actions">
+              <a class="btn btn-small" href="./models/opener_prototype3_1_final_fixed.zip" download>
+                Descargar modelo (.zip)
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+              </a>
+              <a class="btn btn-small btn-ghost" href="https://sketchfab.com/3d-models/opener-prototype3-1-final-fixed-fc3d1f05860b4549837d759a247ed764" target="_blank" rel="noopener">
+                Ver en Sketchfab
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="explainer reveal">
+            <span class="explainer-tag">Glosario</span>
+            <h3>¿Qué es glTF?</h3>
+            <p>
+              glTF (GL Transmission Format) es un formato abierto para transportar escenas 3D.
+              Se lo conoce como “el JPEG de los 3D”: guarda geometría, materiales y jerarquías en
+              un archivo liviano que cualquier navegador puede interpretar.
+            </p>
+            <ul class="check-list">
+              <li>Ligero y rápido de descargar</li>
+              <li>Compatible con WebGL y motores 3D</li>
+              <li>Materiales PBR listos para render</li>
+              <li>Estándar abierto, sin dependencias</li>
+            </ul>
+            <div class="explainer-note">
+              <span>En este proyecto</span>
+              <p>El visor carga el <code>.gltf</code> y su <code>.bin</code> por separado, arma la escena y la ilumina en tiempo real.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="creditos">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <p class="section-label">05 / Créditos y licencia</p>
+          <h2>Un objeto, muchas manos.</h2>
+          <p class="footer-credit">
+            Este trabajo está basado en
+            <a href="https://sketchfab.com/3d-models/opener-prototype3-1-final-fixed-fc3d1f05860b4549837d759a247ed764" target="_blank" rel="noopener">«Opener Prototype3 1 Final Fixed»</a>
+            de <a href="https://sketchfab.com/algl" target="_blank" rel="noopener">algl</a>,
+            disponible en Sketchfab y licenciado bajo
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.
+          </p>
+          <p class="license-exact">
+            This work is based on "Opener Prototype3 1 Final Fixed"
+            (https://sketchfab.com/3d-models/opener-prototype3-1-final-fixed-fc3d1f05860b4549837d759a247ed764)
+            by algl (https://sketchfab.com/algl) licensed under CC-BY-4.0
+            (http://creativecommons.org/licenses/by/4.0/).
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <a href="https://sketchfab.com/3d-models/opener-prototype3-1-final-fixed-fc3d1f05860b4549837d759a247ed764" target="_blank" rel="noopener">Ver en Sketchfab <span aria-hidden="true">↗</span></a>
+          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Licencia CC BY 4.0 <span aria-hidden="true">↗</span></a>
+          <a href="./models/opener_prototype3_1_final_fixed.zip" download>Descargar modelo <span aria-hidden="true">↓</span></a>
+          <a href="#top">Volver arriba <span aria-hidden="true">↑</span></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>TYDM · Tecnología y Diseño Multimedia</span>
+        <span>Proyecto académico · 2026</span>
+        <span>Hecho con HTML, CSS, JavaScript y Three.js</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var isFile = window.location.protocol === 'file:';
+
+      function showFallback(message) {
+        var loader = document.getElementById('loader');
+        var error = document.getElementById('stage-error');
+        if (loader) loader.classList.add('is-hidden');
+        if (!error) return;
+        if (message) {
+          var paragraph = error.querySelector('p');
+          if (paragraph) paragraph.textContent = message;
+        }
+        error.hidden = false;
+      }
+
+      if (isFile) {
+        document.addEventListener('DOMContentLoaded', function () {
+          showFallback('Estás abriendo el archivo directamente. Ejecutá "python -m http.server" en la carpeta del proyecto y entrá a http://localhost:8000/docs/.');
+        });
+      } else {
+        window.setTimeout(function () {
+          if (!window.__tydmBooted) showFallback();
+        }, 9000);
+      }
+    })();
+  </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three.module.js",
+        "three/addons/": "./vendor/addons/"
+      }
+    }
+  </script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
